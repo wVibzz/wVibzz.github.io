@@ -1,1 +1,54 @@
-<h1>hello!</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabbed Content Platform</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Tab Navigation -->
+        <nav class="tabs">
+            <button class="tab-btn" onclick="openTab(event, 'videos')">Videos</button>
+            <button class="tab-btn" onclick="openTab(event, 'images')">Images</button>
+            <button class="tab-btn" onclick="openTab(event, 'links')">Links</button>
+            <button class="tab-btn" onclick="openTab(event, 'files')">Files</button>
+            <button class="tab-btn" onclick="openTab(event, 'messaging')">Messaging</button>
+        </nav>
+
+        <!-- Tab Content -->
+        <div id="videos" class="tab-content">
+            <h2>Videos</h2>
+            <input type="file" id="videoInput" accept="video/*">
+            <button onclick="uploadContent('videoInput')">Upload Video</button>
+        </div>
+
+        <div id="images" class="tab-content">
+            <h2>Images</h2>
+            <input type="file" id="imageInput" accept="image/*">
+            <button onclick="uploadContent('imageInput')">Upload Image</button>
+        </div>
+
+        <div id="links" class="tab-content">
+            <h2>Links</h2>
+            <input type="text" id="linkInput" placeholder="Paste your link here">
+            <button onclick="uploadContent('linkInput')">Add Link</button>
+        </div>
+
+        <div id="files" class="tab-content">
+            <h2>Files</h2>
+            <input type="file" id="fileInput">
+            <button onclick="uploadContent('fileInput')">Upload File</button>
+        </div>
+
+        <div id="messaging" class="tab-content">
+            <h2>Messaging</h2>
+            <input type="text" id="messageInput" placeholder="Type your message">
+            <button onclick="uploadContent('messageInput')">Send Message</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
