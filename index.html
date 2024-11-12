@@ -7,55 +7,55 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <!-- Tab Navigation -->
-        <nav class="tabs">
-            <button class="tab-btn" onclick="openTab(event, 'videos')">Videos</button>
-            <button class="tab-btn" onclick="openTab(event, 'images')">Images</button>
-            <button class="tab-btn" onclick="openTab(event, 'links')">Links</button>
-            <button class="tab-btn" onclick="openTab(event, 'files')">Files</button>
-            <button class="tab-btn" onclick="openTab(event, 'messaging')">Messaging</button>
-        </nav>
+    <!-- Tab Navigation at the Top -->
+    <nav class="tabs">
+        <button class="tab-btn" onclick="openTab(event, 'videos')">Videos</button>
+        <button class="tab-btn" onclick="openTab(event, 'images')">Images</button>
+        <button class="tab-btn" onclick="openTab(event, 'links')">Links</button>
+        <button class="tab-btn" onclick="openTab(event, 'files')">Files</button>
+        <button class="tab-btn" onclick="openTab(event, 'messaging')">Messaging</button>
+    </nav>
 
-        <!-- Tab Content -->
-        <div id="videos" class="tab-content">
-            <h2>Videos</h2>
-            <div class="input-section">
-                <input type="file" id="videoInput" accept="video/*">
-                <button onclick="uploadContent('videoInput')">Upload Video</button>
+    <!-- Flex Container for Main Content and Input Area -->
+    <div class="flex-container">
+        <!-- Message Display Area -->
+        <div id="main-content">
+            <div id="videos" class="tab-content">
+                <h2>Videos</h2>
+                <div id="videoDisplay">Uploaded videos will appear here.</div>
+            </div>
+
+            <div id="images" class="tab-content">
+                <h2>Images</h2>
+                <div id="imageDisplay">Uploaded images will appear here.</div>
+            </div>
+
+            <div id="links" class="tab-content">
+                <h2>Links</h2>
+                <div id="linkDisplay">Added links will appear here.</div>
+            </div>
+
+            <div id="files" class="tab-content">
+                <h2>Files</h2>
+                <div id="fileDisplay">Uploaded files will appear here.</div>
+            </div>
+
+            <div id="messaging" class="tab-content">
+                <h2>Messaging</h2>
+                <div id="messageDisplay">Messages will appear here.</div>
             </div>
         </div>
 
-        <div id="images" class="tab-content">
-            <h2>Images</h2>
-            <div class="input-section">
-                <input type="file" id="imageInput" accept="image/*">
-                <button onclick="uploadContent('imageInput')">Upload Image</button>
+        <!-- Input Area for Uploading Content -->
+        <div id="input-area">
+            <div class="input-field-container">
+                <input type="file" id="videoInput" class="input-field" accept="video/*">
+                <input type="file" id="imageInput" class="input-field" accept="image/*">
+                <input type="text" id="linkInput" class="input-field" placeholder="Paste your link here">
+                <input type="file" id="fileInput" class="input-field">
+                <input type="text" id="messageInput" class="input-field" placeholder="Type your message">
             </div>
-        </div>
-
-        <div id="links" class="tab-content">
-            <h2>Links</h2>
-            <div class="input-section">
-                <input type="text" id="linkInput" placeholder="Paste your link here">
-                <button onclick="uploadContent('linkInput')">Add Link</button>
-            </div>
-        </div>
-
-        <div id="files" class="tab-content">
-            <h2>Files</h2>
-            <div class="input-section">
-                <input type="file" id="fileInput">
-                <button onclick="uploadContent('fileInput')">Upload File</button>
-            </div>
-        </div>
-
-        <div id="messaging" class="tab-content">
-            <h2>Messaging</h2>
-            <div class="input-section">
-                <input type="text" id="messageInput" placeholder="Type your message">
-                <button onclick="uploadContent('messageInput')">Send Message</button>
-            </div>
+            <button onclick="uploadContent()">Upload / Send</button>
         </div>
     </div>
 
