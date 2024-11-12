@@ -1,55 +1,59 @@
-// Tab Navigation Functionality
-function openTab(event, tabName) {
-    // Hide all tab content
-    const tabContents = document.getElementsByClassName("tab-content");
-    for (let content of tabContents) {
-        content.classList.remove("active");
-    }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dark Theme Tabbed Content Platform</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Tab Navigation at the Top -->
+    <nav class="tabs">
+        <button class="tab-btn" onclick="openTab(event, 'videos')">Videos</button>
+        <button class="tab-btn" onclick="openTab(event, 'images')">Images</button>
+        <button class="tab-btn" onclick="openTab(event, 'links')">Links</button>
+        <button class="tab-btn" onclick="openTab(event, 'files')">Files</button>
+        <button class="tab-btn" onclick="openTab(event, 'messaging')">Messaging</button>
+    </nav>
 
-    // Remove "active" class from all buttons
-    const tabButtons = document.getElementsByClassName("tab-btn");
-    for (let button of tabButtons) {
-        button.classList.remove("active");
-    }
+    <!-- Flex Container for Main Content and Input Area -->
+    <div class="flex-container">
+        <!-- Message Display Area -->
+        <div id="main-content">
+            <div id="videos" class="tab-content">
+                <div id="videoDisplay">Uploaded videos will appear here.</div>
+            </div>
 
-    // Show the selected tab content and set the button as active
-    document.getElementById(tabName).classList.add("active");
-    event.currentTarget.classList.add("active");
+            <div id="images" class="tab-content">
+                <div id="imageDisplay">Uploaded images will appear here.</div>
+            </div>
 
-    // Hide all input fields in the input area
-    const inputFields = document.getElementsByClassName("input-field");
-    for (let field of inputFields) {
-        field.style.display = "none";
-    }
+            <div id="links" class="tab-content">
+                <div id="linkDisplay">Added links will appear here.</div>
+            </div>
 
-    // Show the appropriate input field based on the active tab
-    const inputId = tabName + "Input";
-    const activeInput = document.getElementById(inputId);
-    if (activeInput) {
-        activeInput.style.display = "block";
-    }
-}
+            <div id="files" class="tab-content">
+                <div id="fileDisplay">Uploaded files will appear here.</div>
+            </div>
 
-// Mock upload function to handle the input fields
-function uploadContent() {
-    // Check which input field is currently visible
-    const activeInput = document.querySelector("#input-area .input-field:not([style*='display: none'])");
+            <div id="messaging" class="tab-content">
+                <div id="messageDisplay">Messages will appear here.</div>
+            </div>
+        </div>
 
-    if (activeInput) {
-        let content;
+        <!-- Input Area for Uploading Content -->
+        <div id="input-area">
+            <div class="input-field-container">
+                <input type="file" id="videoInput" class="input-field" accept="video/*">
+                <input type="file" id="imageInput" class="input-field" accept="image/*">
+                <input type="text" id="linkInput" class="input-field" placeholder="Paste your link here">
+                <input type="file" id="fileInput" class="input-field">
+                <input type="text" id="messageInput" class="input-field" placeholder="Type your message">
+            </div>
+            <button onclick="uploadContent()">Send</button>
+        </div>
+    </div>
 
-        // Handle file or text input based on the input field type
-        if (activeInput.type === "file") {
-            content = activeInput.files[0]?.name || "No file selected";
-        } else {
-            content = activeInput.value || "No input provided";
-        }
-
-        // Display uploaded content based on the active tab
-        const tabContentId = activeInput.id.replace("Input", "Display");
-        const displayArea = document.getElementById(tabContentId);
-        displayArea.innerHTML += `<p>${content}</p>`;
-
-        activeInput.value = ""; // Clear input after upload
-    }
-}
+    <script src="script.js"></script>
+</body>
+</html>
